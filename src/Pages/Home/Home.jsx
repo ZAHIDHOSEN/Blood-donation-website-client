@@ -1,9 +1,13 @@
 import React from 'react';
+import Banner from '../../Components/Banner';
+import Features from '../../Components/Features';
 
 const Home = () => {
     return (
-        <div>
-            <h2>This is home</h2>
+        <div className='w-11/12 mx-auto'>
+            <Banner></Banner>
+            <Features></Features>
+          
             
         </div>
     );
