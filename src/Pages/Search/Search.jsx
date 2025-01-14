@@ -23,8 +23,8 @@ const Search = () => {
 
   const handleSearch = () =>{
     setResult([
-      {name: 'zahid', bloodGroup, district: selectDistrict, upazila: selectUpazila},
-      {name: 'plabon', bloodGroup, district: selectDistrict, upazila: selectUpazila}
+      {name: 'donars', bloodGroup, district: selectDistrict, upazila: selectUpazila},
+      {name: 'donars', bloodGroup, district: selectDistrict, upazila: selectUpazila}
     ])
   }
     return (

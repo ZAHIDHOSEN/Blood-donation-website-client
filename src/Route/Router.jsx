@@ -28,13 +28,13 @@ import Register from "../Pages/Register/Register";
           path: 'register',
           element: <Register></Register>,
           loader: async () =>{
-            const [district, upazila] = await Promise.all([
+            const [districts, upazila] = await Promise.all([
               fetch('http://localhost:5000/district')
               .then(res => res.json()),
               fetch('http://localhost:5000/upazila')
               .then(res => res.json())
             ]);
-            return {district, upazila};
+            return {districts, upazila};
           }
 
           
