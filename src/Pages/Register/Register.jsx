@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 
 const Register = () => {
+    const {createUser} = useContext(AuthContext);
+    const navigate = useNavigate()
+
 
     const {districts, upazila} = useLoaderData()
     // console.log(districts, upazila)
@@ -16,7 +20,7 @@ const Register = () => {
          const [newUpazila, setNewUpazila] = useState(upazila);
           const [selectUpazila, setSelectUpazila] = useState();
 
-          const handleSignUp = e =>{
+          const handleRegister = e =>{
             e.preventDefault();
             const form = e.target;
             const email = form.email.value;
@@ -30,6 +34,12 @@ const Register = () => {
 
             const formData = {email, name, avatar, group, district, upazila, password, ConfirmPassword}
             console.log(formData);
+
+            createUser(email, ConfirmPassword)
+            .then(result =>{
+                const user = result.user;
+                console.log(user);
+            })
 
 
           }
@@ -46,7 +56,7 @@ const Register = () => {
 
           <div className="card bg-base-100 w-1/2 mx-auto shrink-0 shadow-2xl">
           <h1 className="text-5xl font-bold text-center">Register</h1>
-            <form onSubmit={handleSignUp} className="card-body">
+            <form onSubmit={handleRegister} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>

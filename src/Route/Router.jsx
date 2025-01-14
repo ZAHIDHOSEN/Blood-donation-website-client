@@ -7,6 +7,7 @@ import Home from "../Pages/Home/Home";
 import ErrorPage from "../Pages/Error/ErrorPage";
 import Search from "../Pages/Search/Search";
 import Register from "../Pages/Register/Register";
+import Login from "../Pages/Login/Login";
 
 
  export const router = createBrowserRouter([
@@ -38,6 +39,10 @@ import Register from "../Pages/Register/Register";
           }
 
           
+        },
+        {
+          path:'login',
+          element:<Login></Login>,
         }
       ]
    
