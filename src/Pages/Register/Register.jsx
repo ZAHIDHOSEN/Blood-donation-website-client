@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
+
 
 const Register = () => {
 
@@ -23,13 +25,19 @@ const Register = () => {
             const group = form.group.value;
             const district = form.district.value;
             const upazila = form.upazila.value;
-            const password = form.password.value;
+            const password = form.textPass.value;
+            const ConfirmPassword = form.password.value;
 
-            const formData = {email, name, avatar, group, district, upazila, password}
+            const formData = {email, name, avatar, group, district, upazila, password, ConfirmPassword}
             console.log(formData);
 
 
           }
+
+        //   useEffect(()=>{
+        //     loadCaptchaEnginge(6); 
+
+        //   },[])
 
 
 
@@ -105,14 +113,23 @@ const Register = () => {
           </div>
 
               </div>
-          
+
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input type="password" name='password' placeholder="password" className="input input-bordered" required />
+                <input type="text" name='textPass' placeholder="password" className="input input-bordered" required />
               
               </div>
+          
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Confirm Password</span>
+                </label>
+                <input type="password" name='password' placeholder=" confirm password" className="input input-bordered" required />
+              
+              </div>
+             
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Register</button>
               </div>
