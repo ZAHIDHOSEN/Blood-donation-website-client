@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 
 const Register = () => {
@@ -19,6 +20,7 @@ const Register = () => {
 
          const [newUpazila, setNewUpazila] = useState(upazila);
           const [selectUpazila, setSelectUpazila] = useState();
+          const [errorMessage, setErrorMessage] = useState('')
 
           const handleRegister = e =>{
             e.preventDefault();
@@ -35,10 +37,26 @@ const Register = () => {
             const formData = {email, name, avatar, group, district, upazila, password, ConfirmPassword}
             console.log(formData);
 
+                 // password validation
+                  const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+                   if(!passwordPattern.test(ConfirmPassword)){
+                   setErrorMessage('At least one uppercase, one lower case and not less than six digit')
+                    return;
+            
+                   }
+
             createUser(email, ConfirmPassword)
             .then(result =>{
                 const user = result.user;
                 console.log(user);
+
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "registration completed successfully",
+                  showConfirmButton: false,
+                  timer: 1500
+                });
             })
 
 
@@ -137,11 +155,15 @@ const Register = () => {
                   <span className="label-text">Confirm Password</span>
                 </label>
                 <input type="password" name='password' placeholder=" confirm password" className="input input-bordered" required />
+                {
+                  errorMessage && <p className='text-red-500'>{errorMessage}</p>
+                }
               
               </div>
              
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Register</button>
+                <p>older user here <Link to='/login'>Login</Link></p>
               </div>
             </form>
           </div>
