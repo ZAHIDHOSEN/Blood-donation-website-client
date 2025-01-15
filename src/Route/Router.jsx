@@ -10,6 +10,7 @@ import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import Dashboard from "../Layout/Dashboard";
 import Profile from "../Pages/Dashboard/Profile/Profile";
+import PrivetRoute from "../Route/PrivetRoute"
 
 
  export const router = createBrowserRouter([
@@ -51,7 +52,7 @@ import Profile from "../Pages/Dashboard/Profile/Profile";
     },
     {
       path: "dashboard",
-      element: <Dashboard></Dashboard>,
+      element:<PrivetRoute><Dashboard></Dashboard></PrivetRoute> ,
       children: [
         {
           path: 'profile',
