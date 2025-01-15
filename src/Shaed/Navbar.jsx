@@ -10,7 +10,7 @@ const Navbar = () => {
   const links = <>
   <li><Link to='/'>Home</Link></li>
   <li><Link to='/search'>Search</Link></li>
-  <li><Link to='/search'>Search</Link></li>
+  <li><Link to='/dashboard/profile'>Dashboard</Link></li>
   <li><Link to='/blog'>Blog</Link></li>
   
   </>
@@ -49,7 +49,18 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           {
-            user ? <button onClick={logOut} className="btn btn-primary">LogOut</button> : <Link to='/login'>Login</Link>
+
+            
+            
+              user ? <>
+             <div>
+             <img src={user?.photoURL} alt="" />
+             <button onClick={logOut} className="btn btn-primary">LogOut</button>
+             </div>
+              </> : <>
+              <Link to='/login'>Login</Link>
+              </>
+          
           }
         </div>
       </div>

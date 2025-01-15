@@ -3,11 +3,13 @@ import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import UseAxiosPublic from '../../Hook/UseAxiosPublic';
 
 
 const Register = () => {
-    const {createUser} = useContext(AuthContext);
-    const navigate = useNavigate()
+    const {createUser, updateUserProfile} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const axiosPublic = UseAxiosPublic();
 
 
     const {districts, upazila} = useLoaderData()
@@ -49,14 +51,46 @@ const Register = () => {
             .then(result =>{
                 const user = result.user;
                 console.log(user);
+                updateUserProfile(name, avatar)
+                .then(() =>{
+                  // create user entry in the database
 
-                Swal.fire({
-                  position: "top-end",
-                  icon: "success",
-                  title: "registration completed successfully",
-                  showConfirmButton: false,
-                  timer: 1500
-                });
+                  const userInfo = {
+                    name: name,
+                    email: email,
+                    avatar: avatar,
+                    district: district,
+                    upazila: upazila,
+                    group: group
+
+
+                  }
+
+                  axiosPublic.post('/users', userInfo)
+                  .then(res =>{
+                    if(res.data.inserted){
+                      console.log('user added to database')
+                      Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "registration completed successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+                     
+                    }
+                    navigate('/');
+
+                  })
+               
+
+                  
+             
+
+                })
+                .catch(error => console.log(error))
+
+               
             })
 
 

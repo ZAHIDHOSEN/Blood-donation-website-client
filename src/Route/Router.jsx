@@ -8,6 +8,8 @@ import ErrorPage from "../Pages/Error/ErrorPage";
 import Search from "../Pages/Search/Search";
 import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
+import Dashboard from "../Layout/Dashboard";
+import Profile from "../Pages/Dashboard/Profile/Profile";
 
 
  export const router = createBrowserRouter([
@@ -47,4 +49,15 @@ import Login from "../Pages/Login/Login";
       ]
    
     },
+    {
+      path: "dashboard",
+      element: <Dashboard></Dashboard>,
+      children: [
+        {
+          path: 'profile',
+          element: <Profile></Profile>
+
+        }
+      ]
+    }
   ]);
