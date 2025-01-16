@@ -11,6 +11,7 @@ import Login from "../Pages/Login/Login";
 import Dashboard from "../Layout/Dashboard";
 import Profile from "../Pages/Dashboard/Profile/Profile";
 import PrivetRoute from "../Route/PrivetRoute"
+import AllUsers from "../Pages/Dashboard/AdminDashboard/AllUsers";
 
 
  export const router = createBrowserRouter([
@@ -58,7 +59,13 @@ import PrivetRoute from "../Route/PrivetRoute"
           path: 'profile',
           element: <Profile></Profile>
 
+        },
+        // admin routes
+        {
+          path: 'all users',
+          element: <AllUsers></AllUsers>
         }
+    
       ]
     }
   ]);

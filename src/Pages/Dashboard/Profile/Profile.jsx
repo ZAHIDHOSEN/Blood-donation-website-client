@@ -15,20 +15,23 @@ const Profile = () => {
 
     useEffect(() =>{
         
-    axiosPublic.get(`/users?email=${user?.email}`)
-    .then(res =>{
-        console.log(res.data)
-        setProfileData(res.data)
-    })
-
-    },[user, axiosPublic])
+       if(user?.email){
+        axiosPublic.get(`/users?email=${user?.email}`)
+        .then(res =>{
+            console.log(res.data)
+            setProfileData(res.data)
+        })
+       }
+    
+        },[user, axiosPublic])
 
 
     const handleUpdate = e =>{
         e.preventDefault();
 
         const updatedData = {
-            name: profileData.name,
+            name: profileData.name, 
+            // email: profileData.email,
 
             avatar: profileData.avatar,
             district: profileData.district,

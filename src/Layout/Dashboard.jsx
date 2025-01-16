@@ -1,29 +1,68 @@
 import { CgProfile } from "react-icons/cg";
-import { FaCalendar } from "react-icons/fa";
+import { FaCalendar, FaHome, FaList, FaUser } from "react-icons/fa";
+import { Fa3, FaReact } from "react-icons/fa6";
 import { IoMdHome } from "react-icons/io";
 import { NavLink, Outlet } from "react-router-dom";
 
 
 const Dashboard = () => {
+
+    // todo : get admin value from database
+
+    const isAdmin = true;
+    
     return (
         <div className="flex">
             {/* dashboard side bar */}
             <div className="w-64 min-h-screen bg-orange-400">
                 <ul className=" menu p-4">
+
+                    {
+                        isAdmin ? <>
+
+
+                   
+                      <li> <NavLink to="/dashboard/profile"> <CgProfile />My profile</NavLink> </li>
+                      <li> <NavLink to="/dashboard/home"> <FaHome />My Home</NavLink> </li>
+                      <li> <NavLink to="/dashboard/all users"> <FaUser/>All users</NavLink> </li>
+                      <li> <NavLink to="/dashboard/request"> <FaCalendar />All Blood Donation Request</NavLink> </li>
+                      <li> <NavLink to="/dashboard/management"> <FaList/>Content Management</NavLink> </li>
+                   
+
+                        </>
+                        : <>
+                                 <li>
+                   
+                              <NavLink to="/dashboard/profile"> <CgProfile />My profile</NavLink>
+                               </li>
+                               <li>
+              
+                              <NavLink to="/dashboard/home"> <IoMdHome />My Home</NavLink>
+                              </li>
+                           <li>
+              
+                           <NavLink to="/dashboard/management"><FaCalendar />Management</NavLink>
+                         </li>
+                        </>
+                    }
+           
+
+
+                    <div className="divider"></div>
+                    {/* shared nav links */}
+
                     <li>
                    
-                        <NavLink to="/dashboard/profile"> <CgProfile />My profile</NavLink>
-                    </li>
-                    <li>
-                   
-                        <NavLink to="/dashboard/home"> <IoMdHome />My Home</NavLink>
-                    </li>
-                    <li>
-                   
-                        <NavLink to="/dashboard/management"><FaCalendar />Management</NavLink>
-                    </li>
+                   <NavLink to="/"> <CgProfile />Home</NavLink>
+                 </li>
+
+
 
                 </ul>
+              
+
+            
+              
 
             </div>
             {/* dashboard content */}
@@ -37,3 +76,6 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+
+// <div className="divider"></div>
