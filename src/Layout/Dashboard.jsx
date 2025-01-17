@@ -3,13 +3,14 @@ import { FaCalendar, FaHome, FaList, FaUser } from "react-icons/fa";
 import { Fa3, FaReact } from "react-icons/fa6";
 import { IoMdHome } from "react-icons/io";
 import { NavLink, Outlet } from "react-router-dom";
+import UseAdmin from "../Hook/UseAdmin";
 
 
 const Dashboard = () => {
 
     // todo : get admin value from database
 
-    const isAdmin = true;
+    const [isAdmin] = UseAdmin();
     
     return (
         <div className="flex">
@@ -37,7 +38,7 @@ const Dashboard = () => {
                                </li>
                                <li>
               
-                              <NavLink to="/dashboard/home"> <IoMdHome />My Home</NavLink>
+                              <NavLink to="/dashboard/donationRequest"> <IoMdHome />Donation Request</NavLink>
                               </li>
                            <li>
               

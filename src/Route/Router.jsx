@@ -12,6 +12,8 @@ import Dashboard from "../Layout/Dashboard";
 import Profile from "../Pages/Dashboard/Profile/Profile";
 import PrivetRoute from "../Route/PrivetRoute"
 import AllUsers from "../Pages/Dashboard/AdminDashboard/AllUsers";
+import DonationRequest from "../Pages/Dashboard/UserDashboard.jsx/DonationRequest";
+import AdminRoute from "../Route/AdminRoute"
 
 
  export const router = createBrowserRouter([
@@ -60,10 +62,24 @@ import AllUsers from "../Pages/Dashboard/AdminDashboard/AllUsers";
           element: <Profile></Profile>
 
         },
+        {
+          path: 'donationRequest',
+          element: <DonationRequest></DonationRequest>,
+          loader: async () =>{
+            const [districts, upazila] = await Promise.all([
+              fetch('http://localhost:5000/district')
+              .then(res => res.json()),
+              fetch('http://localhost:5000/upazila')
+              .then(res => res.json())
+            ]);
+            return {districts, upazila};
+          }
+
+        },
         // admin routes
         {
           path: 'all users',
-          element: <AllUsers></AllUsers>
+          element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
         }
     
       ]
