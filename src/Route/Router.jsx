@@ -15,6 +15,7 @@ import AllUsers from "../Pages/Dashboard/AdminDashboard/AllUsers";
 import DonationRequest from "../Pages/Dashboard/UserDashboard.jsx/DonationRequest";
 import AdminRoute from "../Route/AdminRoute"
 import UserHome from "../Pages/Dashboard/UserDashboard.jsx/UserHome";
+import MyDonationRequest from "../Pages/Dashboard/UserDashboard.jsx/MyDonationRequest";
 
 
  export const router = createBrowserRouter([
@@ -81,6 +82,10 @@ import UserHome from "../Pages/Dashboard/UserDashboard.jsx/UserHome";
           path: 'userHome',
           element: <UserHome></UserHome>
 
+        },
+        {
+          path:'my-donation-requests',
+          element:<MyDonationRequest></MyDonationRequest>
         },
         // admin routes
         {

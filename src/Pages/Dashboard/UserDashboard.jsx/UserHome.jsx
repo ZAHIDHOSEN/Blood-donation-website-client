@@ -40,6 +40,7 @@ const UserHome = () => {
         if (result.isConfirmed) {
           const res = await axiosSecure.delete(`/requests/${item._id}`)
           if(res.data.deletedCount > 0 ){
+    
             Swal.fire({
               position: "top-end",
               icon: "success",
