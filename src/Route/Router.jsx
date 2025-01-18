@@ -14,6 +14,7 @@ import PrivetRoute from "../Route/PrivetRoute"
 import AllUsers from "../Pages/Dashboard/AdminDashboard/AllUsers";
 import DonationRequest from "../Pages/Dashboard/UserDashboard.jsx/DonationRequest";
 import AdminRoute from "../Route/AdminRoute"
+import UserHome from "../Pages/Dashboard/UserDashboard.jsx/UserHome";
 
 
  export const router = createBrowserRouter([
@@ -74,6 +75,11 @@ import AdminRoute from "../Route/AdminRoute"
             ]);
             return {districts, upazila};
           }
+
+        },
+        {
+          path: 'userHome',
+          element: <UserHome></UserHome>
 
         },
         // admin routes
