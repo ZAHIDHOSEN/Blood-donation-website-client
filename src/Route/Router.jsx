@@ -16,6 +16,7 @@ import DonationRequest from "../Pages/Dashboard/UserDashboard.jsx/DonationReques
 import AdminRoute from "../Route/AdminRoute"
 import UserHome from "../Pages/Dashboard/UserDashboard.jsx/UserHome";
 import MyDonationRequest from "../Pages/Dashboard/UserDashboard.jsx/MyDonationRequest";
+import UserEdit from "../Pages/Dashboard/UserDashboard.jsx/UserEdit";
 
 
  export const router = createBrowserRouter([
@@ -86,6 +87,24 @@ import MyDonationRequest from "../Pages/Dashboard/UserDashboard.jsx/MyDonationRe
         {
           path:'my-donation-requests',
           element:<MyDonationRequest></MyDonationRequest>
+        },
+        {
+          path: 'edit/:id',
+          element: <UserEdit></UserEdit>,
+          loader: async ({params}) =>{
+            const [districts, upazila, request] = await Promise.all([
+              fetch('http://localhost:5000/district')
+              .then(res => res.json()),
+              fetch('http://localhost:5000/upazila')
+              .then(res => res.json()),
+              fetch(`http://localhost:5000/requests/${params.id}`)
+              .then(res => res.json())
+            ]);
+            return {districts, upazila, request};
+          }
+
+          // loader: ({params}) => fetch(`http://localhost:5000/requests/${params.id}`)
+
         },
         // admin routes
         {

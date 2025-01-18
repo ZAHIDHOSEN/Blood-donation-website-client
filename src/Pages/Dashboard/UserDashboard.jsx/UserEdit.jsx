@@ -1,44 +1,51 @@
 import React, { useContext, useState } from 'react';
-
+import { useForm } from 'react-hook-form';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
-import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
 import UseAxiosPublic from '../../../Hook/UseAxiosPublic';
 
+const UserEdit = () => {
+    const {user} = useContext(AuthContext)
+    const axiosPublic = UseAxiosPublic();
+    const {districts, upazila, request} = useLoaderData()
+    console.log(districts, upazila, request)
 
-const DonationRequest = () => {
-  const {user} = useContext(AuthContext)
-  const axiosPublic = UseAxiosPublic();
+    const [selectDistrict, setSelectDistrict] = useState()
+          const [filterDistrict, setFilterDistrict] = useState(districts)
+          
+          const [selectUpazila, setSelectUpazila] = useState();
+          const [newUpazila, setNewUpazila] = useState(upazila);
 
-    const {districts, upazila} = useLoaderData();
+
+              const { register, handleSubmit } = useForm()
+                const onSubmit = async(data) => {
+                  console.log(data)
+
+                  
+                  const res = await axiosPublic.patch(`/requests/${request._id}`,data)
+                   console.log(res.data)
+                   if(res.data.modifiedCount > 0){
+
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Data updated successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+
+                   }
+           
+                }
    
-
-      const [selectDistrict, setSelectDistrict] = useState()
-      const [filterDistrict, setFilterDistrict] = useState(districts)
-      
-      const [selectUpazila, setSelectUpazila] = useState();
-      const [newUpazila, setNewUpazila] = useState(upazila);
-     
-
-      const { register, handleSubmit } = useForm()
-      const onSubmit = async(data) => {
-        console.log(data)
-
-        const res = await axiosPublic.post('/requests',data)
-        console.log(res.data)
-      }
-  
-
- 
-    
     return (
-        <div> 
+        <div>
             <div>
-                <h3 className="text-2xl font-bold text-center">Donation Request</h3>
-            </div>
+                <h3 className='text-center font-bold text-3xl'>Edit Request</h3>
 
-            <div>
-            <form  onSubmit={handleSubmit(onSubmit)} className="card-body">
+
+                <form  onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Requester Name</span>
@@ -55,14 +62,14 @@ const DonationRequest = () => {
                 <label className="label">
                   <span className="label-text">Recipent Name</span>
                 </label>
-                <input type='text'  {...register('recipentName')}  placeholder="recipent-name" className="input input-bordered" required />
+                <input type='text' defaultValue={request.recipentName}  {...register('recipent-name')}  placeholder="recipent-name" className="input input-bordered" required />
               </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">District</span>
                 </label>
                 <select  {...register('district')} className="select select-bordered w-full max-w-xs" value={selectDistrict} onChange={(e) => setSelectDistrict(e.target.value)}>
-                 <option value="">District</option>
+                 <option  value="">District</option>
                  {filterDistrict.map((district) => (
                 <option key={district._id} value={district.name}>
                  {district.name}
@@ -89,19 +96,19 @@ const DonationRequest = () => {
                 <label className="label">
                   <span className="label-text">Hospital  Name</span>
                 </label>
-                <input type="text"  {...register('hospitalName')} placeholder="Hospital name" className="input input-bordered" required />
+                <input type="text" defaultValue={request.hospitalName}  {...register('hospitalName')} placeholder="Hospital name" className="input input-bordered" required />
               </div>
           <div className="form-control">
                 <label className="label">
                   <span className="label-text">Full Address</span>
                 </label>
-                <input type="text" {...register('address')} placeholder="full address" className="input input-bordered" required />
+                <input type="text" defaultValue={request.address} {...register('address')} placeholder="full address" className="input input-bordered" required />
               </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Blood Group</span>
                 </label>
-                <select {...register('group')} className="select select-bordered w-full max-w-xs">
+                <select {...register('group')}  className="select select-bordered w-full max-w-xs">
              
                  <option value="">Blood Group</option>
                  <option value="A+">A+</option>
@@ -119,14 +126,14 @@ const DonationRequest = () => {
                 <label className="label">
                   <span className="label-text">Donation  Date</span>
                 </label>
-                <input type="date"  {...register('date')} placeholder="full address" className="input input-bordered" required />
+                <input type="date" defaultValue={request.date}  {...register('date')} placeholder="full address" className="input input-bordered" required />
               </div>
 
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Donation Time</span>
                 </label>
-                <input type="time"  {...register('time')} placeholder="donation time" className="input input-bordered" required />
+                <input type="time" defaultValue={request.time}  {...register('time')} placeholder="donation time" className="input input-bordered" required />
               </div>
               
               </div>
@@ -134,21 +141,20 @@ const DonationRequest = () => {
                 <label className="label">
                   <span className="label-text">Requester message</span>
                 </label>
-                <input type="text"  {...register('message')} placeholder="message" className="input input-bordered" required />
+                <input type="text" defaultValue={request.message}  {...register('message')} placeholder="message" className="input input-bordered" required />
               </div>
 
              
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Request</button>
+                <button className="btn btn-primary">update</button>
               
               </div>
             </form>
-
-     
+               
             </div>
             
         </div>
     );
 };
 
-export default DonationRequest;
+export default UserEdit;

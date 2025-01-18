@@ -101,7 +101,7 @@ const MyDonationRequest = () => {
       {filterRequest.map((request,index)=>(
      <tr key={request._id}>
      <th>{index + 1}</th>
-     <td>{request['recipent-name']}</td>
+     <td>{request.recipentName}</td>
      <td>{`${request.district}, ${request.upazila}`}</td>
      <td>{request.date}</td>
      <td>{request.time}</td>
