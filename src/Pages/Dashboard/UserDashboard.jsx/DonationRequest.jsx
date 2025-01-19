@@ -1,14 +1,16 @@
 import React, { useContext, useState } from 'react';
 
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
 import { useForm } from 'react-hook-form';
 import UseAxiosPublic from '../../../Hook/UseAxiosPublic';
+import Swal from 'sweetalert2';
 
 
 const DonationRequest = () => {
   const {user} = useContext(AuthContext)
   const axiosPublic = UseAxiosPublic();
+  const navigate = useNavigate();
 
     const {districts, upazila} = useLoaderData();
    
@@ -26,6 +28,15 @@ const DonationRequest = () => {
 
         const res = await axiosPublic.post('/requests',data)
         console.log(res.data)
+
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "create donation request",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        navigate('/dashboard/my-donation-requests')
       }
   
 

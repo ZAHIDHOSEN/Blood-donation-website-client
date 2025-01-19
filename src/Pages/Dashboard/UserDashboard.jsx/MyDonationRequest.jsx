@@ -130,7 +130,7 @@ const MyDonationRequest = () => {
                   <td>
                    
                    <Link to={`/dashboard/edit/${request._id}`}><button className="btn btn-warning mr-2">Edit</button></Link>
-                   <button className="btn btn-danger" onClick={() => handleDelete(request)}>Delete</button>
+                
                  </td>
                   </div>
                 </td>

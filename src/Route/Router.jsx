@@ -17,6 +17,7 @@ import AdminRoute from "../Route/AdminRoute"
 import UserHome from "../Pages/Dashboard/UserDashboard.jsx/UserHome";
 import MyDonationRequest from "../Pages/Dashboard/UserDashboard.jsx/MyDonationRequest";
 import UserEdit from "../Pages/Dashboard/UserDashboard.jsx/UserEdit";
+import AdminHome from "../Pages/Dashboard/AdminDashboard/AdminHome";
 
 
  export const router = createBrowserRouter([
@@ -107,6 +108,10 @@ import UserEdit from "../Pages/Dashboard/UserDashboard.jsx/UserEdit";
 
         },
         // admin routes
+        {
+          path: 'adminHome',
+          element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
+        },
         {
           path: 'all users',
           element: <AdminRoute><AllUsers></AllUsers></AdminRoute>

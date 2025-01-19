@@ -62,7 +62,7 @@ const UserEdit = () => {
                 <label className="label">
                   <span className="label-text">Recipent Name</span>
                 </label>
-                <input type='text' defaultValue={request.recipentName}  {...register('recipent-name')}  placeholder="recipent-name" className="input input-bordered" required />
+                <input type='text' defaultValue={request.recipentName}  {...register('recipentName')}  placeholder="recipent-name" className="input input-bordered" required />
               </div>
               <div className="form-control">
                 <label className="label">
