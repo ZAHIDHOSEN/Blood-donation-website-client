@@ -18,6 +18,9 @@ import UserHome from "../Pages/Dashboard/UserDashboard.jsx/UserHome";
 import MyDonationRequest from "../Pages/Dashboard/UserDashboard.jsx/MyDonationRequest";
 import UserEdit from "../Pages/Dashboard/UserDashboard.jsx/UserEdit";
 import AdminHome from "../Pages/Dashboard/AdminDashboard/AdminHome";
+import AllBloodDonationRequest from "../Pages/Dashboard/AdminDashboard/AllBloodDonationRequest";
+import ContentManagement from "../Pages/Dashboard/AdminDashboard/ContentManagement";
+import AddBlog from "../Pages/Dashboard/AdminDashboard/AddBlog";
 
 
  export const router = createBrowserRouter([
@@ -115,6 +118,18 @@ import AdminHome from "../Pages/Dashboard/AdminDashboard/AdminHome";
         {
           path: 'all users',
           element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
+        },
+        {
+          path: 'allDonationRequest',
+          element: <AdminRoute><AllBloodDonationRequest></AllBloodDonationRequest></AdminRoute>
+        },
+        {
+          path: 'content-management',
+          element: <AdminRoute><ContentManagement></ContentManagement></AdminRoute>
+        },
+        {
+          path: 'content-management/addBlog',
+          element:<AdminRoute><AddBlog></AddBlog></AdminRoute>
         }
     
       ]
