@@ -14,7 +14,7 @@ const Search = () => {
 
 
   useEffect(()=>{
-    fetch('http://localhost:5000/upazila')
+    fetch('https://blood-donation-server-tan-nine.vercel.app/upazila')
     .then(res => res.json())
     .then(data =>{
       setUpazila(data)

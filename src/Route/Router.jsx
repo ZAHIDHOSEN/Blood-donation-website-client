@@ -40,16 +40,16 @@ import DonationRequestDetails from "../Pages/DonationRequestsDetails/DonationReq
         {
           path: 'search',
           element: <Search></Search>,
-          loader: () => fetch('http://localhost:5000/district')
+          loader: () => fetch('https://blood-donation-server-tan-nine.vercel.app/district')
         },
         {
           path: 'register',
           element: <Register></Register>,
           loader: async () =>{
             const [districts, upazila] = await Promise.all([
-              fetch('http://localhost:5000/district')
+              fetch('https://blood-donation-server-tan-nine.vercel.app/district')
               .then(res => res.json()),
-              fetch('http://localhost:5000/upazila')
+              fetch('https://blood-donation-server-tan-nine.vercel.app/upazila')
               .then(res => res.json())
             ]);
             return {districts, upazila};
@@ -96,9 +96,9 @@ import DonationRequestDetails from "../Pages/DonationRequestsDetails/DonationReq
           element: <DonationRequest></DonationRequest>,
           loader: async () =>{
             const [districts, upazila] = await Promise.all([
-              fetch('http://localhost:5000/district')
+              fetch('https://blood-donation-server-tan-nine.vercel.app/district')
               .then(res => res.json()),
-              fetch('http://localhost:5000/upazila')
+              fetch('https://blood-donation-server-tan-nine.vercel.app/upazila')
               .then(res => res.json())
             ]);
             return {districts, upazila};
@@ -119,17 +119,17 @@ import DonationRequestDetails from "../Pages/DonationRequestsDetails/DonationReq
           element: <UserEdit></UserEdit>,
           loader: async ({params}) =>{
             const [districts, upazila, request] = await Promise.all([
-              fetch('http://localhost:5000/district')
+              fetch('https://blood-donation-server-tan-nine.vercel.app/district')
               .then(res => res.json()),
-              fetch('http://localhost:5000/upazila')
+              fetch('https://blood-donation-server-tan-nine.vercel.app/upazila')
               .then(res => res.json()),
-              fetch(`http://localhost:5000/requests/${params.id}`)
+              fetch(`https://blood-donation-server-tan-nine.vercel.app/requests/${params.id}`)
               .then(res => res.json())
             ]);
             return {districts, upazila, request};
           }
 
-          // loader: ({params}) => fetch(`http://localhost:5000/requests/${params.id}`)
+          // loader: ({params}) => fetch(`https://blood-donation-server-tan-nine.vercel.app/requests/${params.id}`)
 
         },
         // admin routes
