@@ -21,6 +21,8 @@ import AdminHome from "../Pages/Dashboard/AdminDashboard/AdminHome";
 import AllBloodDonationRequest from "../Pages/Dashboard/AdminDashboard/AllBloodDonationRequest";
 import ContentManagement from "../Pages/Dashboard/AdminDashboard/ContentManagement";
 import AddBlog from "../Pages/Dashboard/AdminDashboard/AddBlog";
+import Blog from "../Pages/Blog/Blog";
+import BlogDetails from "../Pages/BlogDetails/BlogDetails";
 
 
  export const router = createBrowserRouter([
@@ -56,6 +58,14 @@ import AddBlog from "../Pages/Dashboard/AdminDashboard/AddBlog";
         {
           path:'login',
           element:<Login></Login>,
+        },
+        {
+          path: 'blog',
+          element: <Blog></Blog>
+        },
+        {
+          path: 'blog/:id',
+          element: <BlogDetails></BlogDetails>
         }
       ]
    
