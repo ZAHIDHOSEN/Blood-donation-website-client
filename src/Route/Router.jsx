@@ -23,6 +23,8 @@ import ContentManagement from "../Pages/Dashboard/AdminDashboard/ContentManageme
 import AddBlog from "../Pages/Dashboard/AdminDashboard/AddBlog";
 import Blog from "../Pages/Blog/Blog";
 import BlogDetails from "../Pages/BlogDetails/BlogDetails";
+import DonationRequests from "../Pages/Blood/DonationRequests";
+import DonationRequestDetails from "../Pages/DonationRequestsDetails/DonationRequestsDetails";
 
 
  export const router = createBrowserRouter([
@@ -65,7 +67,17 @@ import BlogDetails from "../Pages/BlogDetails/BlogDetails";
         },
         {
           path: 'blog/:id',
-          element: <BlogDetails></BlogDetails>
+          element: <BlogDetails></BlogDetails>,
+         
+        },
+        {
+          path: 'donationRequests',
+          element: <DonationRequests></DonationRequests>
+        },
+        {
+          path: 'donationRequestsDetails/:id',
+          element: <DonationRequestDetails></DonationRequestDetails>
+
         }
       ]
    

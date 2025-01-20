@@ -12,6 +12,8 @@ const Navbar = () => {
   <li><Link to='/search'>Search</Link></li>
   <li><Link to='/dashboard/profile'>Dashboard</Link></li>
   <li><Link to='/blog'>Blog</Link></li>
+  <li><Link to='/donationRequests'> Blood Donation Requests</Link></li>
+
   
   </>
     return (
@@ -39,7 +41,7 @@ const Navbar = () => {
          
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <a className="btn btn-ghost text-xl">Blood</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">

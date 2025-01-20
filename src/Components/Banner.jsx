@@ -1,5 +1,6 @@
 import React from 'react';
 import BannerImg from '../assets/Banner.jpg' 
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
     return (
@@ -16,8 +17,8 @@ const Banner = () => {
             Blood donation is a selfless act that saves millions of lives every year. By donating blood, you contribute to the recovery and survival of patients in need.
            
             </p>
-            <button className="btn btn-primary mr-4">Join as a donor</button>
-            <button className="btn btn-success">Search Donors</button>
+           <Link to="/register"> <button className="btn btn-primary mr-4">Join as a donor</button></Link>
+          <Link to={`/search`}><button className="btn btn-success">Search Donors</button></Link>
           </div>
         </div>
       </div>
