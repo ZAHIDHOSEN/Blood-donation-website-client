@@ -76,7 +76,7 @@ import DonationRequestDetails from "../Pages/DonationRequestsDetails/DonationReq
         },
         {
           path: 'donationRequestsDetails/:id',
-          element: <DonationRequestDetails></DonationRequestDetails>
+          element:<PrivetRoute> <DonationRequestDetails></DonationRequestDetails></PrivetRoute>
 
         }
       ]
