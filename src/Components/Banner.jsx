@@ -5,15 +5,15 @@ import { Link } from 'react-router-dom';
 const Banner = () => {
     return (
         <div
-        className="hero min-h-96"
+        className="hero min-h-screen"
         style={{
           backgroundImage: `url(${BannerImg})`,
         }}>
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-neutral-content text-center">
-          <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Welcome</h1>
-            <p className="mb-5">
+          <div className="max-w-7xl">
+            <h1 className="mb-5 text-7xl font-bold text-white">Welcome</h1>
+            <p className="mb-5 text-2xl text-white">
             Blood donation is a selfless act that saves millions of lives every year. By donating blood, you contribute to the recovery and survival of patients in need.
            
             </p>
