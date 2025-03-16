@@ -54,7 +54,7 @@ console.log(user)
   return (
     <div>
       <h2 className="text-4xl text-center font-bold">My Profile</h2>
-      <div className="card bg-base-100 w-1/2 mx-auto shrink-0 shadow-2xl my-10">
+      <div className="card bg-base-100 w-full sm:w-3/4 md:w-1/2 lg:w-1/2  mx-auto shrink-0 shadow-2xl my-10">
         <form onSubmit={handleUpdate} className="card-body">
           <div className="form-control">
             <label className="label">

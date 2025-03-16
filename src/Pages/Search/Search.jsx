@@ -29,7 +29,7 @@ const Search = () => {
   }
     return (
       <div>
-          <div className="card bg-slate-100 w-1/2 mx-auto shrink-0 shadow-2xl">
+          <div className="card bg-slate-100 w-full sm:w-3/4 md:w-1/2 lg:w-1/3  mx-auto my-10 shrink-0 shadow-2xl">
           <h2 className='text-3xl font-bold text-center'>Search for blood donner</h2>
         <form className="card-body">
           <div className="form-control">

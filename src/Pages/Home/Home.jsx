@@ -1,23 +1,28 @@
 import React from 'react';
 import Banner from '../../Components/Banner';
 import Features from '../../Components/Features';
-import ContactNumber from '../../Components/ContactNumber';
-import ContactForm from '../../Components/ContactForm';
 import Statistics from '../../Components/Statistics';
 import HowItWork from '../../Components/HowItWork';
 import Testimonials from '../../Components/Testimonials';
+import Contact from '../../Components/Contact';
+import Faq from '../../Components/Faq';
 
 const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <div className='w-11/12 mx-auto'>
+            <div className='max-w-screen-xl mx-auto'>
+            <HowItWork></HowItWork>
             <Features></Features>
             <Statistics></Statistics>
-            <HowItWork></HowItWork>
             <Testimonials></Testimonials>
-            <ContactForm></ContactForm>
-            <ContactNumber></ContactNumber>
+            <Faq></Faq>
+            <Contact></Contact>
+            
+           
+            
+          
+          
             
             
           
