@@ -14,7 +14,8 @@ const ContactForm = () => {
     const formData = {email,phone, message} 
     
     try{
-     await axiosPublic.post('/contact',formData)
+     const data = await axiosPublic.post('/contact',formData)
+     console.log(data.data);
        Swal.fire({
                   position: "top-end",
                   icon: "success",
@@ -22,6 +23,7 @@ const ContactForm = () => {
                   showConfirmButton: false,
                   timer: 1500
                 });
+                e.target.reset()
 
     }
     catch(error){
