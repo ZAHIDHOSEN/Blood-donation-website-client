@@ -5,9 +5,13 @@ import Footer from "../Shaed/Footer";
 
 const MainLayout = () => {
     return (
-        <div>
+        <div className="flex flex-col min-h-screen">
             <Navbar></Navbar>
+            <main className="flex-grow">
             <Outlet></Outlet>
+
+            </main>
+          
             <Footer></Footer>
 
             

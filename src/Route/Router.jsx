@@ -25,6 +25,7 @@ import Blog from "../Pages/Blog/Blog";
 import BlogDetails from "../Pages/BlogDetails/BlogDetails";
 import DonationRequests from "../Pages/Blood/DonationRequests";
 import DonationRequestDetails from "../Pages/DonationRequestsDetails/DonationRequestsDetails";
+import Donate from "../Components/Donate";
 
 
  export const router = createBrowserRouter([
@@ -78,7 +79,11 @@ import DonationRequestDetails from "../Pages/DonationRequestsDetails/DonationReq
           path: 'donationRequestsDetails/:id',
           element:<PrivetRoute> <DonationRequestDetails></DonationRequestDetails></PrivetRoute>
 
-        }
+        },
+       {
+        path: 'donate',
+        element: <PrivetRoute><Donate></Donate></PrivetRoute>
+       }
       ]
    
     },

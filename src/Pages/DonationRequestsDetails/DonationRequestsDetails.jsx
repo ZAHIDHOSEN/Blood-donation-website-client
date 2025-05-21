@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import UseAxiosPublic from "../../Hook/UseAxiosPublic";
 import Swal from "sweetalert2";
 
@@ -34,9 +34,9 @@ const DonationRequestDetails = () => {
         <p>Blood Group: {request.bloodGroup}</p>
         <p>Date: {request.date}</p>
         <p>Time: {request.time}</p>
-        <button  className="btn btn-primary mt-4">
+       <Link to='/donate'> <button  className="btn btn-primary mt-4">
           Donate
-        </button>
+        </button></Link>
       </div>
     </div>
   );
