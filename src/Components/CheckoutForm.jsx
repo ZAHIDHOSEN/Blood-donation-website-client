@@ -1,66 +1,3 @@
-// import React, { useContext, useEffect, useState } from 'react';
-// import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-// import { AuthContext } from '../Provider/AuthProvider';
-// import { useNavigate } from 'react-router-dom';
-// import UseAxiosSecure from '../Hook/UseAxiosSecure';
-
-// const CheckoutForm = () => {
-//     const [error, setError] = useState('')
-//     const [clientSecret, setClientSecret] = useState('')
-//     const [transactionId, setTransactionId] = useState('')
-
-//     const stripe = useStripe()
-//     const elements = useElements();
-//     const axiosSecure = UseAxiosSecure();
-//     const {user} = useContext(AuthContext)
-//     const navigate = useNavigate();
-//     const [loading, setLoading] = useState(false);
-
- 
-
-//     const handleSubmit = async (event) => {
-//         event.preventDefault();
-//         setLoading(true);
-//          await axiosSecure.post('/create-payment-intent',{price: 10})
-//          .then(res =>{
-//             console.log(res.data.clientSecret);
-//             setClientSecret(res.data.clientSecret)
-//          })
-         
-    
-      
-    
-//         const result = await stripe.confirmCardPayment(clientSecret, {
-//           payment_method: {
-//             card: elements.getElement(CardElement),
-//           },
-//         });
-    
-//         if (result.error) {
-//           alert(result.error.message);
-//         } else {
-//           if (result.paymentIntent.status === 'succeeded') {
-//             alert('Payment succeeded!');
-//           }
-//         }
-//         setLoading(false);
-//       };
-
-//     return (
-//         <form onSubmit={handleSubmit}>
-//         <CardElement />
-//         <button type="submit" disabled={!stripe || loading}>
-//           {loading ? 'Processing…' : 'Pay Now'}
-//         </button>
-//       </form>
-//     );
-// };
-
-// export default CheckoutForm;
-
-
-
-
 import React, { useContext, useEffect, useState } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { AuthContext } from '../Provider/AuthProvider';
@@ -115,7 +52,7 @@ const CheckoutForm = () => {
         card,
         billing_details: {
           name: user?.displayName || 'Anonymous',
-          email: user?.email || 'unknown@example.com',
+          email: user?.email || 'unknownUser@gmail.com',
         },
       },
     });
@@ -135,21 +72,33 @@ const CheckoutForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <CardElement />
-      <button
+    <div className='flex flex-col justify-center items-center my-20'>
+       <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="w-52">
+        <CardElement />
+      </div>
+    <div className='flex justify-center my-10'>
+        <button
         type="submit"
         disabled={!stripe || !clientSecret || loading}
         className="bg-blue-600 text-white px-4 py-2 rounded disabled:bg-gray-400"
       >
         {loading ? 'Processing…' : 'Pay Now'}
       </button>
+    </div>
       {error && <p className="text-red-600">{error}</p>}
       {transactionId && (
         <p className="text-green-600">Transaction completed: {transactionId}</p>
       )}
     </form>
+
+    </div>
+   
   );
 };
 
 export default CheckoutForm;
+
+
+
+
